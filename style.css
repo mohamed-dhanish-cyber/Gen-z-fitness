@@ -32,15 +32,21 @@
 }
 
 *,*::before,*::after { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+html, body {
+  overflow-x: hidden;
+  width: 100%;
+  max-width: 100%;
+}
 html { scroll-behavior: smooth; font-size: 16px; }
 body {
   font-family: var(--font-body);
   background: var(--bg);
   color: var(--white);
-  overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
+  word-break: break-word;
+  overflow-wrap: break-word;
 }
-img { display: block; width: 100%; height: 100%; object-fit: cover; }
+img { display: block; max-width: 100%; height: auto; object-fit: cover; }
 a  { color: inherit; text-decoration: none; touch-action: manipulation; }
 ul { list-style: none; }
 button { cursor: pointer; border: none; background: none; font-family: inherit; touch-action: manipulation; }
@@ -849,7 +855,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   .final-cta-section { padding: 100px 0; }
 
   .nav-links {
-    position: fixed; top: var(--nav-h); left: 0; right: 0;
+    position: fixed; top: var(--nav-h); left: 0; right: 0; bottom: 0;
     background: rgba(13,13,13,0.98); backdrop-filter: blur(20px);
     flex-direction: column; align-items: flex-start;
     padding: 24px; gap: 4px;
@@ -857,6 +863,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
     transition: transform 0.4s ease, opacity 0.4s ease;
     will-change: transform, opacity;
     border-bottom: 1px solid var(--border);
+    overflow-y: auto;
   }
   .nav-links.open { transform: translateY(0); opacity: 1; }
   .nav-link { font-size: 1rem; padding: 12px 16px; width: 100%; }
@@ -903,6 +910,9 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   .hero-headline { font-size: clamp(2rem, 9vw, 2.8rem); }
   .hero-actions { flex-direction: column; width: 100%; }
   .hero-actions .btn { width: 100%; }
+  .stats-grid { grid-template-columns: 1fr; }
+  .stat-item { border-right: none !important; border-top: 1px solid var(--border) !important; padding: 20px 16px; }
+  .stat-item:first-child { border-top: none !important; }
   .gallery-masonry { grid-template-columns: 1fr; }
   .gallery-item--wide { grid-column: span 1; aspect-ratio: 4/3; }
   .contact-form-wrap { padding: 24px 20px; }
